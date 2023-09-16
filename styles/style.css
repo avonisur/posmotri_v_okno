@@ -19,7 +19,8 @@ html {
    /* step 1 */ 
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 133px;
+  
 }
 
 h1,
@@ -47,7 +48,7 @@ ol {
 .content {
   display: flex;
   justify-content: center;
-  align-items: end;
+  
   width: 1140px;
   gap: 30px;
 }
@@ -60,9 +61,9 @@ ol {
 }
 
 .content__list {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
-  width: 399px;
+  width: 418px;
   height: 298px;
   margin-block-start: 26px;
   position: relative;
@@ -75,11 +76,16 @@ ol {
 }
 /* step 2 */
 
+.result {
+  margin-top: 78px;
+}
+
 .result__video-container {
   width: 711px;
   height: 386px;
   margin-block-end: 16px;
   position: relative;
+
   /* step 3 */
 }
 
@@ -231,15 +237,7 @@ ol {
 
 .more-button {
   cursor: pointer;
-  display: flex;
   width: 399px;
-  height: 34px;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-  border: 1px solid #FFF;
 }
 
 /* step 6 */
