@@ -18,8 +18,8 @@ html {
   background-color: #1b1919;
    /* step 1 */ 
   display: flex;
-  justify-content: center;
-  margin-top: 133px;
+  justify-content: center; /* ЦЕНТРОВКА ПО ГОРИЗОНТАЛИ */
+  align-items: center; /* ЦЕНТРОВКА ПО ВЕРТИКАЛИ */
   
 }
 
@@ -35,10 +35,8 @@ blockquote,
 fieldset {
   margin: 0;
   padding: 0;
-  /* step 5 */
-  border: none;
-}
 
+}
 ul,
 ol {
   list-style: none;
@@ -48,7 +46,7 @@ ol {
 .content {
   display: flex;
   justify-content: center;
-  
+  align-items: end;
   width: 1140px;
   gap: 30px;
 }
@@ -60,13 +58,34 @@ ol {
   align-items: flex-end;
 }
 
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.result__video-container {
+  position: relative;
+  width: 711px;
+  height: 386px;
+  margin-block-end: 16px;
+ 
+  /* step 3 */
+}
+
+.content__details {
+  display: flex;
+  flex-direction: column;
+}
+
 .content__list {
+  position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 418px;
+  width: 403px;
   height: 298px;
   margin-block-start: 26px;
-  position: relative;
+  
 /* step 3 */
 }
 
@@ -76,23 +95,8 @@ ol {
 }
 /* step 2 */
 
-.result {
-  margin-top: 78px;
-}
-
-.result__video-container {
-  width: 711px;
-  height: 386px;
-  margin-block-end: 16px;
-  position: relative;
-
-  /* step 3 */
-}
-
-.result__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.content__list-item {
+  display: flex;
 }
 
 .content__list-item:not(:nth-last-child(1)) {
@@ -103,6 +107,13 @@ ol {
   display: grid;
   grid-template-columns: 200px 194px;
   padding: 2px;
+}
+
+.content__card-link {
+  color: #FFF;
+  width: 100%;
+  text-decoration: none;
+  margin: 3px;
 }
 
 .content__video-card-thumbnail {
@@ -117,16 +128,19 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding-top: 2px;
+  
 }
 
-/* step 4 */
-
-.search-form__fieldset-title {
-  margin-block-end: 5px;
-  font-weight: 400;
-  font-size: 18px;
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
+
 
 .title {
   color: #FFF;
@@ -141,11 +155,6 @@ ol {
   color: #545050;
 }
 
-.content__card-link {
-  text-decoration: none;
-  color: #FFF;
-}
-
 .content__video-card-title {
   color: #FFF;
   font-family: Oswald, sans-serif;
@@ -156,20 +165,73 @@ ol {
 }
 
 .content__video-card-description {
-  line-height: 16.2px;
+  line-height: 90%;
   font-size: 18px;
 }
 
-/* step 5 */
+.content__video-card-description-container {
+  padding-top: 6px;
+}
 
-.visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+/* БЛОК ПОИСКА */
+
+.search-form__fieldset-title {
+  color: #FFF;
+  font-size: 18px;
+}
+
+.search-form__fieldset {
+  border: none;
+}
+
+.search-form__fieldset-title {
+  margin-block-end: 5px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.search-form__label {
+  display: flex;
+  width: fit-content;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+  margin-block-end: 4px;
+}
+
+.search-form__pseudo-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 19px;
+  block-size: 19px;
+  border: 1px solid #fff;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: '';
+  min-inline-size: 15px;
+  min-block-size: 15px;
+  background-color: #fff;
+}
+
+
+.search-form__label-text {
+  appearance: none;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
 
 .search-form__textfield {
@@ -186,68 +248,6 @@ ol {
   outline: none;
 }
 
-.search-form__label {
-  display: flex;
-  width: fit-content;
-  gap: 5px;
-  align-items: center;
-  cursor: pointer;
-}
-
-.search-form__label-text {
-  appearance: none;
-}
-
-.search-form__checkbox-list {
-  display: flex;
-  appearance: none;
-  gap: 15px;
-  margin-block-end: 4px;
-}
-
-.search-form__pseudo-checkbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  inline-size: 19px;
-  block-size: 19px;
-  border: 1px solid #fff;
-}
-
-.button {
-  cursor: pointer;
-  display: flex;
-  width: 194px;
-  height: 34px;
-  justify-content: center;
-  align-items: center;
-  background-color: inherit;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  border: 1px solid #FFF;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.search-form__submit-button {
-  cursor: pointer;
-}
-
-.more-button {
-  cursor: pointer;
-  width: 399px;
-}
-
-/* step 6 */
-
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  content: '';
-  min-inline-size: 15px;
-  min-block-size: 15px;
-  background-color: #fff;
-}
 
 .search-form__label:has(.search-form__textfield:active) {
   outline: none;
@@ -255,14 +255,25 @@ ol {
   border-right: 1px solid #FFF;
 }
 
-.search-form__label:has(:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
+/* КНОПКИ  */
+
+.button {
+  display: flex;
+  width: 194px;
+  height: 34px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background-color: inherit;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  border: 1px solid #FFF;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.search-form__label:hover .search-form__label-text {
-  text-decoration: underline;
-}
 
 .button:hover {
   text-decoration: underline;
@@ -277,17 +288,27 @@ ol {
   outline-offset: 2px;
 }
 
-/* step 7 */
+
+.more-button {
+  cursor: pointer;
+  display: flex;
+  width: 396px;
+  height: 34px;
+  margin: 4px;
+  
+}
+
+
+/* СОСТОЯНИЯ КАРТОЧЕК */
 
 .content__card-link {
   display: block;
 }
 
-.content__card-link_current {
+.content__card-link:active {
   background-color: #545050;
 }
-
-.content__card-link:active {
+.content__card-link_current {
   background-color: #545050;
 }
 
@@ -295,4 +316,5 @@ ol {
   text-decoration: underline;
   text-decoration-color: #fff;
 }
+
 
